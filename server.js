@@ -18,19 +18,12 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness", {
 mongoose.connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
+
 // routes
+// const exerciseRouter = require("./routes/workoutRoutes");
 
-app.use(require("./routes/workoutRoutes"));
-
-app.route("/").post(function (req, res) {
-  Workout.insertMany(data, function (err, result) {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send(result);
-    }
-  });
-});
+// app.use(require("./routes/workoutRoutes"));
+app.use("/exercise", exerciseRouter);
 
 app.listen(PORT, () => {
   console.log(`Running on port http://localhost:${PORT}`);
