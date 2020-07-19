@@ -7,7 +7,7 @@
 
 An easy to use application which allows the user to keep track of cardio and resistance exercises.
 
-_Deployed app:_ http://jawalton6616.github.io/workout-tracker
+_Deployed app:_ https://gentle-badlands-81439.herokuapp.com/
 
 # Table of Contents:
 
