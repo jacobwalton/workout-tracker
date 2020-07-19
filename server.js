@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Workout = require("./models/workout");
-const data = require("./seeders/seed");
 const router = require("./routes/workoutRoutes");
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -23,7 +22,6 @@ mongoose.connection.once("open", () => {
 // routes
 const exerciseRouter = require("./routes/workoutRoutes");
 
-// app.use(require("./routes/workoutRoutes"));
 app.use(require("./routes/workoutRoutes"));
 
 app.listen(PORT, () => {

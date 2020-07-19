@@ -1,17 +1,6 @@
 const Workout = require("../models/workout.js");
 const router = require("express").Router();
 
-// app.route("/").post(function (req, res) {
-//   Workout.insertMany(data, function (err, result) {
-//     if (err) {
-//       res.send(err);
-//     } else {
-//       res.send(result);
-//     }
-//   });
-// });
-/////
-
 router.get("/api/stats", (req, res) => {
   Workout.find({})
     .then((dbWorkout) => {
