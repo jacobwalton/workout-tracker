@@ -1,56 +1,56 @@
-let db;
-const request = indexedDB.open("workout", 1);
+// let db;
+// const request = indexedDB.open("workout", 1);
 
-request.onupgradeneeded = function (event) {
-  const db = event.target.result;
-  db.createObjectStore("pending", { autoIncrement: true });
-};
+// request.onupgradeneeded = function (event) {
+//   const db = event.target.result;
+//   db.createObjectStore("pending", { autoIncrement: true });
+// };
 
-request.onsuccess = function (event) {
-  db = event.target.result;
+// request.onsuccess = function (event) {
+//   db = event.target.result;
 
-  if (navigator.onLine) {
-    checkDatabase();
-  }
-};
+//   if (navigator.onLine) {
+//     checkDatabase();
+//   }
+// };
 
-request.onerror = function (event) {
-  console.log("Woops! " + event.target.errorCode);
-};
+// request.onerror = function (event) {
+//   console.log("Woops! " + event.target.errorCode);
+// };
 
-function saveRecord(record) {
-  const workout = db.workout(["pending"], "readwrite");
+// function saveRecord(record) {
+//   const workout = db.workout(["pending"], "readwrite");
 
-  const store = workout.objectStore("pending");
+//   const store = workout.objectStore("pending");
 
-  store.add(record);
-}
+//   store.add(record);
+// }
 
-function checkDatabase() {
-  const workout = db.workout(["pending"], "readwrite");
-  const store = workout.objectStore("pending");
-  const getAll = store.getAll();
+// function checkDatabase() {
+//   const workout = db.workout(["pending"], "readwrite");
+//   const store = workout.objectStore("pending");
+//   const getAll = store.getAll();
 
-  getAll.onsuccess = function () {
-    if (getAll.result.length > 0) {
-      fetch("/api/workout", {
-        method: "POST",
-        body: JSON.stringify(getAll.result),
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => response.json())
-        .then(() => {
-          const workout = db.workout(["pending"], "readwrite");
+//   getAll.onsuccess = function () {
+//     if (getAll.result.length > 0) {
+//       fetch("/api/workout", {
+//         method: "POST",
+//         body: JSON.stringify(getAll.result),
+//         headers: {
+//           Accept: "application/json, text/plain, */*",
+//           "Content-Type": "application/json",
+//         },
+//       })
+//         .then((response) => response.json())
+//         .then(() => {
+//           const workout = db.workout(["pending"], "readwrite");
 
-          const store = workout.objectStore("pending");
+//           const store = workout.objectStore("pending");
 
-          store.clear();
-        });
-    }
-  };
-}
+//           store.clear();
+//         });
+//     }
+//   };
+// }
 
-window.addEventListener("online", checkDatabase);
+// window.addEventListener("online", checkDatabase);

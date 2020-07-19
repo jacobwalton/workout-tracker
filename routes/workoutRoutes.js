@@ -20,8 +20,8 @@ router.get("/api/stats", (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.get("/api/exercise", (req, res) => {
-  Workout.find({})
+router.get("/api/workout", (req, res) => {
+  Workout.find()
     .then((dbWorkout) => {
       res.json(dbWorkout);
     })

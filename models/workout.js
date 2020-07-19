@@ -38,10 +38,10 @@ const workoutSchema = new Schema({
     trim: true,
     // required: "Enter amount duration of exercise",
   },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
+  // date: {
+  //   type: Date,
+  //   default: Date.now,
+  // },
 });
 
 const Workout = mongoose.model("Workout", workoutSchema);
