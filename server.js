@@ -16,7 +16,6 @@ mongoose.connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
 
-// routes
 require("./routes/workoutRoutes")(app);
 require("./routes/html-routes")(app);
 
